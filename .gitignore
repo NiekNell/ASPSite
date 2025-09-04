@@ -3,3 +3,6 @@ AspSite.APi/bin/
 
 #ignore obj
 AspSite.APi/obj/
+
+#ignore migrations
+AspSite.APi/Data/Migrations/
