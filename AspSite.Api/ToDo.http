@@ -1,0 +1,27 @@
+GET http://localhost:5029/tasks
+
+###
+GET http://localhost:5029/tasks/3
+
+###
+POST http://localhost:5029/tasks
+Content-Type: application/json
+
+{
+    "task": "feed the cat",
+    "urgencyId": 2,
+    "isDone": false
+}
+
+###
+PUT http://localhost:5029/tasks/1
+Content-Type: application/json
+
+{
+    "task": "Laundry",
+    "urgencyId": 1,
+    "isDone": true
+}
+
+###
+DELETE http://localhost:5029/tasks/2
