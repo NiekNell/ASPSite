@@ -1,0 +1,5 @@
+#ignore bin
+AspSite.APi/bin/
+
+#ignore obj
+AspSite.APi/obj/
