@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__todoDb=Host=SiteDb;Port=5432;Database=todoDb;Username=postgres;Password=1234567890
+    volumes:
+      - ./AspSite.Api:/src/AspSite.Api 
+
+  db:
+    image: postgres:15-alpine
+    container_name: SiteDB
+    restart: always
+    environment:
+      - POSTGRES_DB=todoDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234567890
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d todoDb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
